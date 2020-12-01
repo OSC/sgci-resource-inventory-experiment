@@ -1,0 +1,70 @@
+{
+    "id": "1",
+    "name": "Owens",
+    "resourceType": "COMPUTE",
+    "host": "owens.osc.edu",
+    "resource": {
+        "schedulerType": "BATCH",
+        "storageType": "POSIX",
+        "connection": {
+            "connectionProtocol": "SSH",
+            "securityProtocol": "SSHKEYS",
+            "port": 22
+        },
+        "fileSystem": {
+            "rootDir": "#/definitions/dirPath",
+            "homeDir": "#/definitions/dirPath",
+            "scratchDir": "#/definitions/dirPath",
+            "workDir": "#/definitions/dirPath",
+            "archiveDir": "#/definitions/dirPath"     
+        },
+        "batchSystem": {
+            "jobManager": "PBS",
+            "commandPaths": [{
+            "name": "SUBMISSION"
+            }],
+            "partitions": [{
+                "name": "standard",
+                "totalNodes": 648,
+                "nodeHardware": {
+                    "cpuType": "Intel Xeon E5-2680 v4",
+                    "cpuCount": 2,
+                    "memorySize": "128 GB"
+                }
+            },
+            {
+                "name": "gpu",
+                "totalNodes": 160,
+                "nodeHardware": {
+                    "cpuType": "Intel Xeon E5-2680 v4",
+                    "cpuCount": 2,
+                    "gpuType": "NVIDIA Pascal P100",
+                    "gpuCount": 1,
+                    "memorySize": "64 GB"
+                }
+            },
+            {
+                "name": "large-mem",
+                "totalNodes": 16,
+                "nodeHardware": {
+                    "cpuType": "Intel Xeon E5-4830 v3",
+                    "cpuCount": 4,
+                    "memorySize": "1,536 GB"
+                }
+            },
+            {
+                "name": "login",
+                "totalNodes": 4,
+                "nodeHardware": {
+                    "cpuType": "Intel Xeon E5-2680 v4",
+                    "cpuCount": 2,
+                    "memorySize": "256 GB"
+                }
+            }
+            ]
+        }
+    }
+}
+
+
+
